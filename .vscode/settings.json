@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "/home/akshay/.cache/pypoetry/virtualenvs/udemy-langgraph-course-oMcnxGkz-py3.8",
+    "python.analysis.extraPaths": [
+      "/home/akshay/.pyenv/versions/3.13.2/lib/python3.13/site-packages"
+    ],
+    "python.analysis.stubPath": "/home/akshay/.pyenv/versions/3.13.2/lib/python3.13/site-packages",
+    "python.analysis.autoImportCompletions": true,
+    "python.languageServer": "Pylance"
+}
+  
