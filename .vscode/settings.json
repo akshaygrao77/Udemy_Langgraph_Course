@@ -5,6 +5,18 @@
     ],
     "python.analysis.stubPath": "/home/akshay/.pyenv/versions/3.13.2/lib/python3.13/site-packages",
     "python.analysis.autoImportCompletions": true,
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+    "remote.extensionKind": {
+      "GitHub.copilot": [
+        "ui"
+      ],
+      "GitHub.copilot-chat": [
+        "ui"
+      ],
+    },
+    "python.testing.pytestArgs": [
+      "advanced_rag_langgraph"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
 }
-  
