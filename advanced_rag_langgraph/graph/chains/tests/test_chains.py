@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from advanced_rag_langgraph.graph.chains import generation, hallucination_grader
 from advanced_rag_langgraph.graph.chains.retrieval_grader import (
     GradeDocuments,
     retrieval_grader,
@@ -47,4 +48,34 @@ def test_retreval_grader_answer_no() -> None:
         {"question": "How to make a pizza", "document": doc_txt}
     )
 
+    assert res.binary_score == "no"
+
+
+def test_hallucination_grader_answer_yes() -> None:
+    question = "agent memory"
+    docs = retriever.invoke(question)
+
+    generated = generation.generation_chain.invoke(
+        {"context": docs, "question": question}
+    )
+    res: hallucination_grader.GradeHallucinations = (
+        hallucination_grader.hallucination_grader.invoke(
+            {"documents": docs, "generation": generated}
+        )
+    )
+    assert res.binary_score
+
+
+def test_hallucination_grader_answer_no() -> None:
+    question = "agent memory"
+    docs = retriever.invoke(question)
+
+    res: hallucination_grader.GradeHallucinations = (
+        hallucination_grader.hallucination_grader.invoke(
+            {
+                "documents": docs,
+                "generation": "In order to make pizza we need to first start with the dough",
+            }
+        )
+    )
     assert res.binary_score == "no"
